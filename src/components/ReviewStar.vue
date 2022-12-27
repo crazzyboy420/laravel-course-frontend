@@ -17,3 +17,8 @@
         </svg>
     </div>
 </template>
+<script>
+export default {
+  name:"ReviewStar"
+}
+</script>

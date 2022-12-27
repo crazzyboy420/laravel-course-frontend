@@ -77,6 +77,7 @@
 </template>
 
 <script>
+
   import Breadcrumb from '../components/Breadcrumb.vue';
   import ReviewStar from '../components/ReviewStar.vue';
   import Comment    from '../components/Comment.vue';
