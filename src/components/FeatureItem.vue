@@ -1,11 +1,11 @@
 <template>
     <div class="bg-white rounded grap-10 overflow-hidden shadow-card">
-        <a href="single.html">
-          <img srcset="https://laravel-courses.com/storage/courses/3af6d790-51f4-42cf-89db-26740e1bf353.png 2000w, https://laravel-courses.com/storage/courses/1168288b-5e18-4c67-a489-640a02a46198.png 1200w, https://laravel-courses.com/storage/courses/e8f6ef53-4023-4677-8af9-d28e27f87c4d.png 400w" sizes="(max-width: 600px) 400px, (max-width: 1200px) 1200px, 2000px" src="https://laravel-courses.com/storage/courses/1168288b-5e18-4c67-a489-640a02a46198.png" alt="PEST Driven Laravel" class="w-full h-auto object-contain">
-        </a>
+      <router-link :to="{ name: 'single-course' }">
+        <img  src="https://laravel-courses.com/storage/courses/1168288b-5e18-4c67-a489-640a02a46198.png" alt="PEST Driven Laravel" class="w-full h-auto object-contain">
+      </router-link>
         <div class="px-6 pb-5">
           <div class="mt-7 flex justify-between items-center gap-4 mb-4">
-            <a href="single.html" class="text-lg-primary w-full hover:underline">PEST Driven Laravel</a>
+            <router-link :to="{ name: 'single-course' }" class="text-lg-primary w-full hover:underline">Laravel Core Adventures</router-link>
           </div>
           <div>
             <div class="flex items-center mb-2">

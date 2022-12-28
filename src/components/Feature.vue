@@ -10,9 +10,9 @@
           <FeatureItem />
         </div>
         <div class="flex justify-center mt-12 mb-12">
-          <a href="https://laravel-courses.com/courses">
+          <router-link to="/archive">
             <button class="btn-primary text-white h-14 w-32"> Browse all </button>
-          </a>
+          </router-link>
         </div>
       </section>
 </template>

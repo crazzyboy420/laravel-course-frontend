@@ -8,7 +8,7 @@ import SinglePage from './views/Single.vue';
 
 <template>
   <Header />
-  <HomePage />
+  <router-view></router-view>
   <Footer />
 </template>
 

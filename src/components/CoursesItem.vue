@@ -8,7 +8,7 @@
             <div class="flex">
               <div class="flex-1 overflow-flex-wrap">
                 <h2 class="text-xl font-bold text-gray-900 mb-1">
-                  <a href="single.html" class="text-blue-500 hover:underline"> Laravel Core Adventures </a>
+                  <router-link :to="{ name: 'single-course' }" class="text-blue-500 hover:underline">Laravel Core Adventures</router-link>
                 </h2>
                 <div class="flex items-center gap-3">
                   <div class="flex items-center space-x-px">
