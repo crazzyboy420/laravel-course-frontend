@@ -11,9 +11,6 @@
 <script>
 export default {
     name:'TopicFilterItem',
-    props:{
-        link:String,
-        text:String
-    }
+    props: ['link','text']
 }
 </script>

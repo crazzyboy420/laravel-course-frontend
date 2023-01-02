@@ -1,12 +1,33 @@
 <template>
     <footer class="w-full bg-dark pt-[94px] relative">
         <img src="https://laravel-courses.com/img/footer-cure.png" alt="Stylish Design" class="w-auto h-auto object-contain absolute bottom-0 right-0 pointer-events-none z-10">
-        <div class="container mx-auto flex justify-between pb-[50px]">
-           <FooterItem /> 
-           <FooterItem /> 
-           <FooterItem /> 
-           <FooterItem /> 
+        <div v-if="!isLoading" class="container mx-auto flex justify-between pb-[50px]">
+           <FooterItem :content="series" name="series" /> 
+          <div>
+            <h2 class="text-lg-primary-2 text-white">Course by Duration</h2>
+            <ul class="mt-5">
+              <li class="mb-2">
+                <router-link :to="{ name: 'archive', params: { archiveType: 'duration', slug: 0 } }"
+                  class="text-links text-gray-100 text-base before:text-gray-100">1-5 hors</router-link>
+              </li>
+            <li class="mb-2">
+              <router-link :to="{ name: 'archive', params: { archiveType: 'duration', slug: 1 } }"
+                class="text-links text-gray-100 text-base before:text-gray-100">5-10 hors</router-link>
+            </li>
+            <li class="mb-2">
+              <router-link :to="{ name: 'archive', params: { archiveType: 'duration', slug: 2 } }"
+                class="text-links text-gray-100 text-base before:text-gray-100">10+ hors</router-link>
+            </li>
+            </ul>
+          </div>
+           <FooterItem :content="levels" name="levels"/> 
+           <FooterItem :content="platforms" name="platforms" />
+           <FooterItem :content="topics" name="topics" />
         </div>
+
+        <LoadingSpinner v-else-if="isLoading" />
+
+        <Error v-if="!!error" :error="error" />
     
 
         <!--footer bottom -->
@@ -27,11 +48,38 @@
 </template>
 
 <script>
+import axios from 'axios';
 import FooterItem from './FooterItem.vue';
+import LoadingSpinner from './LoadingSpinner.vue';
+import Error from './Error.vue';
 export default{
     name:"Footer",
     components:{
-        FooterItem
+    FooterItem,
+      LoadingSpinner, Error
+    
+},
+  data() {
+    return {
+      platforms: [],
+      series: [],
+      topics: [],
+      levels: [],
+      isLoading: true,
+      error:''
     }
+  },
+  created() {
+    axios.get('https://laravel-courses.test/api/filter-content').then((rs) => {
+      this.platforms = rs.data.platform;
+      this.series = rs.data.series;
+      this.topics = rs.data.topics;
+      this.levels = rs.data.levels;
+      this.isLoading = false
+    }).catch((error) => {
+      this.error = error,
+      this.isLoading = false
+    })
+  }
 }
 </script>

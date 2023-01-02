@@ -2,14 +2,8 @@
     <div>
         <h2 class="text-lg-primary-2 text-white">Course by Duration</h2>
         <ul class="mt-5">
-          <li class="mb-2">
-            <router-link to="/archive" class="text-links text-gray-100 text-base before:text-gray-100">1-5 hours</router-link>
-          </li>
-          <li class="mb-2">
-            <router-link to="/archive" class="text-links text-gray-100 text-base before:text-gray-100">5-10 hours</router-link>
-          </li>
-          <li class="mb-2">
-            <router-link to="/archive" class="text-links text-gray-100 text-base before:text-gray-100">10+ hours</router-link>
+          <li v-for="item in content" :key="item.id" class="mb-2">
+            <router-link :to="{ name: 'archive', params: { archiveType: name, slug: item.slug } }" class="text-links text-gray-100 text-base before:text-gray-100">{{ item.name }}</router-link>
           </li>
         </ul>
     </div>
@@ -17,6 +11,7 @@
 
 <script>
  export default{
-    name:"FooterItem"
+  name: "FooterItem",
+    props:['content','name']
  }
 </script>

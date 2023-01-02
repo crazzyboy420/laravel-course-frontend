@@ -4,17 +4,17 @@
           <div class="sm:flex sm:items-center sm:justify-between">
             <div class="flex items-center">
               <div class="flex items-center space-x-px">
-                <ReviewStar />
+                <ReviewStar :star="review.star" />
               </div>
             </div>
-            <p class="text-sm mt-2.5 sm:mt-0 font-normal text-gray-400">Dec 22, 2022</p>
+            <p class="text-sm mt-2.5 sm:mt-0 font-normal text-gray-400">{{ time }}</p>
           </div>
           <blockquote class="mt-4 sm:mt-6">
-            <p class="text-base font-normal leading-7 text-gray-600">The best course for Laravel Developers!</p>
+            <p class="text-base font-normal leading-7 text-gray-600">{{ review.comment }}</p>
           </blockquote>
           <div class="flex items-center mt-5 sm:mt-8">
-            <img class="flex-shrink-0 w-6 h-6 bg-gray-300 rounded-full" src="https://www.gravatar.com/avatar/f7bd4d2a91e6298ca47bff3a96121906.jpg?s=80&amp;d=blank&amp;r=g" alt="Alex Table Profile Photo">
-            <span class="ml-2.5 text-sm font-medium text-gray-900"> Alex Table </span>
+            <vue-gravatar class="flex-shrink-0 w-6 h-6 bg-gray-300 rounded-full" :email="review.author.email" />
+            <span class="ml-2.5 text-sm font-medium text-gray-900"> {{ review.author.name }} </span>
           </div>
         </div>
       </li>
@@ -22,10 +22,17 @@
 
 <script>
 import ReviewStar from './ReviewStar.vue';
+import moment from 'moment';
 export default{
-    name:'Comment',
+  name: 'Comment',
+  data() {
+    return {
+      time: moment(String(this.review.created_at)).format('LLL'),
+      }
+    },
     components:{
         ReviewStar
-    }
+    },
+  props:['review']
 }
 </script>

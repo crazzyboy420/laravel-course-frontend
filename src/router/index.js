@@ -9,17 +9,18 @@ const router = createRouter({
       component:()=> import('../views/Home.vue')
     },
     {
-      path: '/courses',
+      path: '/:type',
       name: 'courses',
       component: () => import('../views/Courses.vue')
     },
     {
-      path: '/single-course',
+      path: '/single-course/:courseType/:slug',
       name: 'single-course',
+      props:true,
       component: () => import('../views/Single.vue')
     },
     {
-      path: '/archive',
+      path: '/archive/:archiveType/:slug',
       name: 'archive',
       component: () => import('../views/Archive.vue')
     }
