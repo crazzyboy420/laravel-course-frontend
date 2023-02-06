@@ -68,9 +68,8 @@ export default {
   methods: {
     getCourse(type, page) {
       this.isLoading = true;
-      axios.get(`https://laravel-courses.test/api/courses`, {
+      axios.get(`https://laravel-courses.test/api/courses/${type}`, {
         params: {
-          type,
           search: this.search,
           level: this.level,
           platform: this.platform,

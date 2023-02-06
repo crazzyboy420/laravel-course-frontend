@@ -53,7 +53,11 @@ export default {
     methods: {
         fatchData(type, slug,page) {
             this.isLoading = true;
-            axios.get(`https://laravel-courses.test/api/archive?type=${type}&slug=${slug}&page=${page}`).then((rs) => {
+            axios.get(`https://laravel-courses.test/api/archive/${type}/${slug}`, {
+                params: {
+                    page
+                }
+            }).then((rs) => {
                 this.courses = rs.data.courses;
                 this.item = rs.data.item;
                 this.isLoading = false;

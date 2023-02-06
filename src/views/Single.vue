@@ -115,7 +115,7 @@ import Error from '../components/Error.vue';
   methods: {
     getSingle(slug) {
       this.isLoading = false
-      axios.get(`https://laravel-courses.test/api/single?slug=${slug}`).then((rs) => {
+      axios.get(`https://laravel-courses.test/api/single/${slug}`).then((rs) => {
         this.course = rs.data;
         this.isLoading = false;
 
